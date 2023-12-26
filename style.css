@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+form{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+input[type="checkbox"],input[type="radio"]{
+    display: none;
+}
+
+input[type="color"]{
+    width: 0.1px;
+    height: 0.1px;
+    visibility: hidden;
+}
+
+input+label,select{
+    padding: 4px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+input:checked + label{
+    background-color: #D3E2FD;
+}
+
+.row2{
+    display: flex;
+    width: 60vw;
+    margin: 20px auto;
+}
+.row2 .selected-cell{
+    width: 100px;
+    text-align: center;
+}
+.row2 input{
+    flex-grow: 1;
+}
+
+.header{
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+.header .cell{
+    border: 0.1px solid #C4C7C5;
+    min-width: 150px;
+    padding: 5px 2px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.header .first-cell{
+    min-width: 50px;
+    border: 0.1px solid #C4C7C5;
+    position: sticky;
+    left: 0;
+}
+.row{
+    display: flex;
+}
+.row .first-cell{
+    min-width: 50px;
+    border: 0.1px solid #C4C7C5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    min-height: 1.5rem;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+.row .cell{
+    border: 0.1px solid #C4C7C5;
+    min-width: 150px;
+    padding: 5px 2px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.row .cell:focus {
+    outline: 2px solid #1B72E8;
+    height: auto;
+    z-index: 1;
+}
+
+.container{
+    height: 80vh;
+    overflow: scroll;
+}
