@@ -3,9 +3,13 @@
     padding: 0;
     box-sizing: border-box;
     background-color: white;
+    font-size: 'monospace';
 }
-
+.head{
+    width: 100vw;
+}
 form {
+    width: 100%;
     margin-top: 10px;
     display: flex;
     justify-content: center;
@@ -105,6 +109,7 @@ input:checked+label {
 }
 
 .container {
+    width: 100vw;
     height: 80vh;
     overflow: scroll;
 }
