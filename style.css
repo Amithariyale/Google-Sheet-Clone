@@ -1,58 +1,64 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background-color: white;
 }
 
-form{
+form {
     margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:20px;
+    gap: 20px;
 }
 
-input[type="checkbox"],input[type="radio"]{
+input[type="checkbox"],
+input[type="radio"] {
     display: none;
 }
 
-input[type="color"]{
+input[type="color"] {
     width: 0.1px;
     height: 0.1px;
     visibility: hidden;
 }
 
-input+label,select{
+input+label,
+select {
     padding: 4px;
     border-radius: 2px;
     cursor: pointer;
 }
 
-input:checked + label{
+input:checked+label {
     background-color: #D3E2FD;
 }
 
-.row2{
+.row2 {
     display: flex;
     width: 60vw;
     margin: 20px auto;
 }
-.row2 .selected-cell{
+
+.row2 .selected-cell {
     width: 100px;
     text-align: center;
 }
-.row2 input{
+
+.row2 input {
     flex-grow: 1;
 }
 
-.header{
+.header {
+    width: fit-content;
     display: flex;
     position: sticky;
     top: 0;
     z-index: 3;
 }
-.header .cell{
+
+.header .cell {
     border: 0.1px solid #C4C7C5;
     min-width: 150px;
     padding: 5px 2px;
@@ -60,41 +66,45 @@ input:checked + label{
     font-size: 0.8rem;
 }
 
-.header .first-cell{
+.header .first-cell {
     min-width: 50px;
     border: 0.1px solid #C4C7C5;
     position: sticky;
     left: 0;
 }
-.row{
+
+.row {
     display: flex;
+    width: fit-content;
 }
-.row .first-cell{
+
+.row .first-cell {
     min-width: 50px;
     border: 0.1px solid #C4C7C5;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 0.8rem;
-    min-height: 1.5rem;
+    min-height: 1.2rem;
     position: sticky;
     left: 0;
     z-index: 2;
 }
-.row .cell{
+
+.row .cell {
     border: 0.1px solid #C4C7C5;
     min-width: 150px;
-    padding: 5px 2px;
-    text-align: center;
-    font-size: 0.8rem;
+    padding-inline: 2px;
+    font-size: 14px;
 }
+
 .row .cell:focus {
     outline: 2px solid #1B72E8;
     height: auto;
     z-index: 1;
 }
 
-.container{
+.container {
     height: 80vh;
     overflow: scroll;
 }

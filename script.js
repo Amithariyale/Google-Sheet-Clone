@@ -22,8 +22,11 @@ for (let i = 1; i <= row; i++) {
       cell.className = "first-cell";
       cell.innerText = i;
     } else {
+      cell.id = `${String.fromCharCode(64 + j)}${i}`;
       cell.className = "cell";
       cell.contentEditable = "true";
+      cell.addEventListener("focus", onCellFocus);
+      cell.addEventListener("blur", onCellBlur);
     }
     row.appendChild(cell);
   }

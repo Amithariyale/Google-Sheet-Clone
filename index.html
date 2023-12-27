@@ -7,17 +7,19 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
     <title>Google Sheet Clone</title>
-</head>
+</head> 
 
 <body>
     <section class="head">
         <form>
-            <select name="fontFamily">
-                <option value="one">one</option>
-                <option value="two">two</option>
-                <option value="three">three</option>
+            <select name="fontFamily" >
+                <option value="monospace" selected>Default</option>
+                <option value="Lucida Sans">Lucida</option>
+                <option value="sans-serif">sans-serif</option>
+                <option value="Georgia, 'Times New Roman', Times, serif">Georgia</option>
+                <option value="Arial, Helvetica, sans-serif">Arial</option>
             </select>
-            <input type="number" name="fontSize">
+            <input type="number" name="fontSize" value="14" min="10" max="36">
             <div>
                 <input type="checkbox" name="bold" id="bold" />
                 <label for="bold" class="material-icons">format_bold</label>
@@ -33,30 +35,31 @@
                 <label for="underline" class="material-icons">format_underline</label>
             </div>
             <div>
-                <input type="radio" name="align" id="align-left" checked>
+                <input type="radio" name="align" id="align-left" checked value="left">
                 <label class="material-icons" for="align-left">format_align_left</label>
             </div>
             <div>
-                <input type="radio" name="align" id="align-right">
-                <label class="material-icons" for="align-right">format_align_right</label>
-            </div>
-            <div>
-                <input type="radio" name="align" id="center">
+                <input type="radio" name="align" id="center" value="center">
                 <label class="material-icons" for="center">format_align_center</label>
             </div>
+            <div>
+                <input type="radio" name="align" id="align-right" value="right">
+                <label class="material-icons" for="align-right">format_align_right</label>
+            </div>
+
 
             <div>
                 <input type="color" name="textColor" id="text-color">
                 <label class="material-icons" for="text-color">format_color_text</label>
             </div>
             <div>
-                <input type="color" name="bg-color" id="bg-color">
+                <input type="color" name="bgColor" id="bg-color">
                 <label class="material-icons" for="bg-color">format_color_fill</label>
             </div>
         </form>
         <div class="row2">
-            <div class="selected-cell">d1</div>
-            <label for="fx">f(x)</label>
+            <div class="selected-cell">NA</div>
+            <label for="fx">fx</label>
             <input type="text" name="fx" id="fx" />
         </div>
     </section>
@@ -64,7 +67,7 @@
         <div class="header"></div>
         <div class="body"></div>
     </section>
-
+    <script src="data-flow.js"></script>
     <script src="script.js"></script>
 </body>
 
