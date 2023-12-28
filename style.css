@@ -5,9 +5,19 @@
     background-color: white;
     font-size: 'monospace';
 }
-.head{
+
+#root {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 2fr 12fr 1fr;
+}
+
+.head {
     width: 100vw;
 }
+
 form {
     width: 100%;
     margin-top: 10px;
@@ -18,7 +28,8 @@ form {
 }
 
 input[type="checkbox"],
-input[type="radio"] {
+input[type="radio"] ,
+input[type="file"]{
     display: none;
 }
 
@@ -35,6 +46,9 @@ select {
     cursor: pointer;
 }
 
+#import+label{
+    /* background-color: black; */
+}
 input:checked+label {
     background-color: #D3E2FD;
 }
@@ -43,6 +57,10 @@ input:checked+label {
     display: flex;
     width: 60vw;
     margin: 20px auto;
+}
+
+.row2 label {
+    padding-inline: 5px;
 }
 
 .row2 .selected-cell {
@@ -103,13 +121,38 @@ input:checked+label {
 }
 
 .row .cell:focus {
-    outline: 2px solid #1B72E8;
+    outline: none;
     height: auto;
-    z-index: 1;
+}
+
+.row .active-cell {
+    border: 2px solid #1B72E8 !important;
 }
 
 .container {
-    width: 100vw;
-    height: 80vh;
     overflow: scroll;
+}
+
+.foot {
+    background-color: #F8FBFD;
+}
+
+.foot-form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-inline: 50px;
+}
+
+.foot-form .material-icons {
+    border-radius: 50%;
+    background-color: green;
+    cursor: pointer;
+}
+
+.foot-form input:checked+label {
+    background-color: rgb(81, 177, 81);
+    color: #ffff;
+    border-radius:5px ;
+    padding: 8px;
 }
