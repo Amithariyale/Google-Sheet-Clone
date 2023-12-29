@@ -2,16 +2,29 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: white;
+    background-color: rgb(250, 240, 255);
     font-size: 'monospace';
 }
 
 #root {
     width: 100vw;
     height: 100vh;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 2fr 12fr 1fr;
+}
+
+#navbar ul,#navbar li{
+    background-color: rgb(17, 84, 14) ;
+}
+
+#navbar ul{
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 10px;
+    padding-left: 20px;
+    align-items: baseline;
+    gap: 20px;
+    font-size: 1.1rem;
+    
 }
 
 .head {
@@ -22,14 +35,20 @@ form {
     width: 100%;
     margin-top: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 20px;
+    padding-inline: 20px;
+}
+
+.head-form a {
+    text-decoration: none;
+    color: black;
 }
 
 input[type="checkbox"],
-input[type="radio"] ,
-input[type="file"]{
+input[type="radio"],
+input[type="file"] {
     display: none;
 }
 
@@ -46,17 +65,26 @@ select {
     cursor: pointer;
 }
 
-#import+label{
-    /* background-color: black; */
+select,
+select+input {
+    background-color: white;
+    text-align: center;
 }
+
 input:checked+label {
+    background-color: #D3E2FD;
+}
+
+input+label:hover {
     background-color: #D3E2FD;
 }
 
 .row2 {
     display: flex;
-    width: 60vw;
-    margin: 20px auto;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .row2 label {
@@ -66,10 +94,22 @@ input:checked+label {
 .row2 .selected-cell {
     width: 100px;
     text-align: center;
+    background-color: white;
+
+    margin-inline: 10px;
 }
 
 .row2 input {
     flex-grow: 1;
+    margin-right: 10px;
+    background-color: white;
+    border: none;
+    padding: 2px;
+}
+
+.container {
+    overflow: scroll;
+    height: 80%;
 }
 
 .header {
@@ -129,12 +169,10 @@ input:checked+label {
     border: 2px solid #1B72E8 !important;
 }
 
-.container {
-    overflow: scroll;
-}
+
 
 .foot {
-    background-color: #F8FBFD;
+    background-color: rgb(250, 240, 255);
 }
 
 .foot-form {
@@ -153,6 +191,6 @@ input:checked+label {
 .foot-form input:checked+label {
     background-color: rgb(81, 177, 81);
     color: #ffff;
-    border-radius:5px ;
+    border-radius: 5px;
     padding: 8px;
 }

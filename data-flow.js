@@ -5,6 +5,8 @@ let state = {};
 let selectedCell = null;
 let sheetCnt = 1,
   selectedSheet = "sheet1";
+
+
 const defaultStyles = {
   innerText: "",
   fontFamily: "monospace",
@@ -13,7 +15,7 @@ const defaultStyles = {
   italic: false,
   underline: false,
   align: "left",
-  bgColor: "#ffffff",
+  bgColor: "#faf0ff",
   textColor: "#000000",
 };
 
@@ -79,12 +81,6 @@ function onCellBlur() {
   currentCell.style.overflow = "hidden";
 }
 
-// to set innerText
-function setInnerText() {
-  const currentCell = document.getElementById(selectedCell);
-  state[selectedCell].innerText = currentCell.innerText;
-}
-
 const fx = document.getElementById("fx");
 fx.addEventListener("keyup", (e) => {
   if (e.code === "Enter" && selectedCell) {
@@ -93,6 +89,13 @@ fx.addEventListener("keyup", (e) => {
     fx.value = "";
   }
 });
+
+// to set innerText
+function setInnerText() {
+  const currentCell = document.getElementById(selectedCell);
+  state[selectedCell].innerText = currentCell.innerText;
+  fx.value = currentCell.innerText;
+}
 
 const footForm = document.querySelector(".foot-form");
 footForm.addEventListener("change", (e) => {
@@ -105,6 +108,7 @@ footForm.addEventListener("change", (e) => {
   const newSheetName = e.target.value;
   const existingData = localStorage.getItem(newSheetName);
   if (existingData) {
+    console.log(existingData);
     state = JSON.parse(existingData);
     for (let key in state) {
       const element = document.getElementById(key);
