@@ -2,29 +2,34 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: rgb(250, 240, 255);
     font-size: 'monospace';
 }
 
 #root {
     width: 100vw;
     height: 100vh;
+    background-color: rgb(250, 240, 255);
 }
 
-#navbar ul,#navbar li{
-    background-color: rgb(17, 84, 14) ;
+#navbar {
+    background-color: green;
+    padding: 30px 30px 0;
 }
 
-#navbar ul{
-    list-style: none;
+#navbar ul {
     display: flex;
-    justify-content: flex-start;
-    padding-top: 10px;
-    padding-left: 20px;
-    align-items: baseline;
-    gap: 20px;
-    font-size: 1.1rem;
-    
+    list-style: none;
+
+}
+
+#navbar li {
+    padding-inline: 30px;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+}
+#navbar li:hover{
+    color: lightgray;
 }
 
 .head {
@@ -109,7 +114,7 @@ input+label:hover {
 
 .container {
     overflow: scroll;
-    height: 80%;
+    height: 77%;
 }
 
 .header {
@@ -118,6 +123,7 @@ input+label:hover {
     position: sticky;
     top: 0;
     z-index: 3;
+    background-color: rgb(250, 240, 255);
 }
 
 .header .cell {
@@ -133,6 +139,7 @@ input+label:hover {
     border: 0.1px solid #C4C7C5;
     position: sticky;
     left: 0;
+    background-color: rgb(250, 240, 255);
 }
 
 .row {
@@ -151,11 +158,13 @@ input+label:hover {
     position: sticky;
     left: 0;
     z-index: 2;
+    background-color: rgb(250, 240, 255);
 }
 
 .row .cell {
     border: 0.1px solid #C4C7C5;
     min-width: 150px;
+    max-width: 150px;
     padding-inline: 2px;
     font-size: 14px;
 }

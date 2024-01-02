@@ -26,7 +26,6 @@ for (let i = 1; i <= row; i++) {
       cell.className = "cell";
       cell.contentEditable = "true";
       cell.addEventListener("focus", onCellFocus);
-      cell.addEventListener("blur", onCellBlur);
       cell.addEventListener("input", setInnerText);
     }
     row.appendChild(cell);

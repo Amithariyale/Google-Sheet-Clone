@@ -6,7 +6,7 @@ let selectedCell = null;
 let sheetCnt = 1,
   selectedSheet = "sheet1";
 
-
+// Default styles for cells
 const defaultStyles = {
   innerText: "",
   fontFamily: "monospace",
@@ -19,6 +19,7 @@ const defaultStyles = {
   textColor: "#000000",
 };
 
+// function to apply current styles to the cells
 function applyStylesToElement(cellElement, styleObj) {
   cellElement.innerText = styleObj.innerText;
   cellElement.style.fontFamily = styleObj.fontFamily;
@@ -32,9 +33,11 @@ function applyStylesToElement(cellElement, styleObj) {
 }
 
 form.addEventListener("change", (e) => {
-  if (selectedCell) {
+
+  if (selectedCell) { // Checking that any cell is selected or not to apply style
     const currentCell = document.getElementById(selectedCell);
 
+    // Extracting styles from the form
     const currentStyles = {
       innerText: currentCell.innerText,
       fontFamily: form.fontFamily.value,
@@ -47,20 +50,23 @@ form.addEventListener("change", (e) => {
       textColor: form.textColor.value,
     };
 
+    // Applying the extracted styles on the selected cell
     applyStylesToElement(currentCell, currentStyles);
     state[selectedCell] = currentStyles;
   }
 });
 
+
+// Callback function for onFocus event on cells
 function onCellFocus(e) {
-  if (selectedCell) {
+  if (selectedCell) { // Checking  If previously any cell is selected or not.
     const prevCell = document.getElementById(selectedCell);
-    prevCell.classList.remove("active-cell");
+    prevCell.classList.remove("active-cell"); // If selected then removing the active-cell class from it.
   }
 
-  selectedCell = e.target.id;
+  selectedCell = e.target.id; // Setting the Currently focused cell as selectedCell
   selectedCellElement.innerText = selectedCell;
-  e.target.classList.add("active-cell");
+  e.target.classList.add("active-cell"); //Adding the active-cell class to the currently selectedCell
 
   if (!state[selectedCell]) {
     state[selectedCell] = defaultStyles;
@@ -68,6 +74,8 @@ function onCellFocus(e) {
   applyCurrentStylesToForm();
 }
 
+
+// Function to apply the styles to form of currently selectedCell
 function applyCurrentStylesToForm() {
   for (let key in state[selectedCell]) {
     form[key].type === "checkbox"
@@ -76,11 +84,8 @@ function applyCurrentStylesToForm() {
   }
 }
 
-function onCellBlur() {
-  const currentCell = document.getElementById(selectedCell);
-  currentCell.style.overflow = "hidden";
-}
 
+// Adding keyup event to fx input 
 const fx = document.getElementById("fx");
 fx.addEventListener("keyup", (e) => {
   if (e.code === "Enter" && selectedCell) {
@@ -90,39 +95,46 @@ fx.addEventListener("keyup", (e) => {
   }
 });
 
-// to set innerText
+// Function to set innerText
 function setInnerText() {
   const currentCell = document.getElementById(selectedCell);
   state[selectedCell].innerText = currentCell.innerText;
-  fx.value = currentCell.innerText;
 }
 
+
+
 const footForm = document.querySelector(".foot-form");
+
+// Adding change event listener to the foot form
 footForm.addEventListener("change", (e) => {
-  localStorage.setItem(selectedSheet, JSON.stringify(state));
+  localStorage.setItem(selectedSheet, JSON.stringify(state));// Saving the current sheet data in the local storage.
   form.reset();
-  for (let cellId in state) {
+  for (let cellId in state) {//Clearing all the styles from the cells;
     clearData(cellId);
   }
 
   const newSheetName = e.target.value;
-  const existingData = localStorage.getItem(newSheetName);
+  const existingData = localStorage.getItem(newSheetName);//Checking if the data of new sheet is present in local storage or not.
   if (existingData) {
-    console.log(existingData);
+    // If the data is present then applying the data on the cells and setting state as the previous data
     state = JSON.parse(existingData);
     for (let key in state) {
       const element = document.getElementById(key);
       applyStylesToElement(element, state[key]);
     }
   } else {
+    // If data is not present then setting the state of cells as empty.
     state = {};
   }
+
 
   selectedSheet = newSheetName;
   selectedCell = null;
   selectedCellElement.innerText = "NA";
 });
 
+
+// Function to create new sheet
 function createNewSheet() {
   sheetCnt++;
 
@@ -138,6 +150,8 @@ function createNewSheet() {
   footForm.appendChild(newSheetContainer);
 }
 
+
+// Function to clear the styles from cell.
 function clearData(cellId) {
   const cell = document.getElementById(cellId);
   cell.innerText = "";

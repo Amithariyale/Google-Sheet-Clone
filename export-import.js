@@ -32,13 +32,14 @@ fileInput.addEventListener("change", (e) => {
   fileReader.readAsText(file);
 });
 
-// document.onload=function() {
-//   const extractedData = localStorage.getItem(selectedCell);
-//   if(extractedData){
-//     state = JSON.parse(existingData);
-//     for (let key in state) {
-//       const element = document.getElementById(key);
-//       applyStylesToElement(element, state[key]);
-//     }
-//   }
-// };
+document.addEventListener('DOMContentLoaded',function() {
+  const extractedData = localStorage.getItem(selectedSheet);
+  if (extractedData) {
+    // If the data is present then applying the data on the cells and setting state as the previous data
+    state = JSON.parse(extractedData);
+    for (let key in state) {
+      const element = document.getElementById(key);
+      applyStylesToElement(element, state[key]);
+    }
+  }
+})
