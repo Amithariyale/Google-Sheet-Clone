@@ -32,9 +32,9 @@ function applyStylesToElement(cellElement, styleObj) {
   cellElement.style.color = styleObj.textColor;
 }
 
-form.addEventListener("change", (e) => {
-
-  if (selectedCell) { // Checking that any cell is selected or not to apply style
+form.addEventListener("input", (e) => {
+  if (selectedCell) {
+    // Checking that any cell is selected or not to apply style
     const currentCell = document.getElementById(selectedCell);
 
     // Extracting styles from the form
@@ -56,10 +56,10 @@ form.addEventListener("change", (e) => {
   }
 });
 
-
 // Callback function for onFocus event on cells
 function onCellFocus(e) {
-  if (selectedCell) { // Checking  If previously any cell is selected or not.
+  if (selectedCell) {
+    // Checking  If previously any cell is selected or not.
     const prevCell = document.getElementById(selectedCell);
     prevCell.classList.remove("active-cell"); // If selected then removing the active-cell class from it.
   }
@@ -74,7 +74,6 @@ function onCellFocus(e) {
   applyCurrentStylesToForm();
 }
 
-
 // Function to apply the styles to form of currently selectedCell
 function applyCurrentStylesToForm() {
   for (let key in state[selectedCell]) {
@@ -84,8 +83,7 @@ function applyCurrentStylesToForm() {
   }
 }
 
-
-// Adding keyup event to fx input 
+// Adding keyup event to fx input
 const fx = document.getElementById("fx");
 fx.addEventListener("keyup", (e) => {
   if (e.code === "Enter" && selectedCell) {
@@ -101,20 +99,19 @@ function setInnerText() {
   state[selectedCell].innerText = currentCell.innerText;
 }
 
-
-
 const footForm = document.querySelector(".foot-form");
 
 // Adding change event listener to the foot form
 footForm.addEventListener("change", (e) => {
-  localStorage.setItem(selectedSheet, JSON.stringify(state));// Saving the current sheet data in the local storage.
+  localStorage.setItem(selectedSheet, JSON.stringify(state)); // Saving the current sheet data in the local storage.
   form.reset();
-  for (let cellId in state) {//Clearing all the styles from the cells;
+  for (let cellId in state) {
+    //Clearing all the styles from the cells;
     clearData(cellId);
   }
 
   const newSheetName = e.target.value;
-  const existingData = localStorage.getItem(newSheetName);//Checking if the data of new sheet is present in local storage or not.
+  const existingData = localStorage.getItem(newSheetName); //Checking if the data of new sheet is present in local storage or not.
   if (existingData) {
     // If the data is present then applying the data on the cells and setting state as the previous data
     state = JSON.parse(existingData);
@@ -127,12 +124,10 @@ footForm.addEventListener("change", (e) => {
     state = {};
   }
 
-
   selectedSheet = newSheetName;
   selectedCell = null;
   selectedCellElement.innerText = "NA";
 });
-
 
 // Function to create new sheet
 function createNewSheet() {
@@ -149,7 +144,6 @@ function createNewSheet() {
 
   footForm.appendChild(newSheetContainer);
 }
-
 
 // Function to clear the styles from cell.
 function clearData(cellId) {
