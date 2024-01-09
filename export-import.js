@@ -32,8 +32,8 @@ fileInput.addEventListener("change", (e) => {
   fileReader.readAsText(file);
 });
 
-document.addEventListener('DOMContentLoaded',function() {
-  const extractedData = localStorage.getItem(selectedSheet);
+document.addEventListener("DOMContentLoaded", function () {
+  let extractedData = localStorage.getItem(`sheet${sheetCnt}`);
   if (extractedData) {
     // If the data is present then applying the data on the cells and setting state as the previous data
     state = JSON.parse(extractedData);
@@ -42,4 +42,9 @@ document.addEventListener('DOMContentLoaded',function() {
       applyStylesToElement(element, state[key]);
     }
   }
-})
+
+  while (extractedData) {
+    extractedData = localStorage.getItem(`sheet${sheetCnt + 1}`);
+    if(extractedData) createNewSheet();
+  }
+});
