@@ -1,5 +1,7 @@
 const selectedCellElement = document.querySelector(".selected-cell");
 const form = document.querySelector(".head-form");
+const loader = document.getElementById("saving_div");
+
 let state = {};
 
 let selectedCell = null;
@@ -34,6 +36,7 @@ function applyStylesToElement(cellElement, styleObj) {
 
 form.addEventListener("input", (e) => {
   if (selectedCell) {
+    loader.style.display = "flex";
     // Checking that any cell is selected or not to apply style
     const currentCell = document.getElementById(selectedCell);
 
@@ -53,6 +56,10 @@ form.addEventListener("input", (e) => {
     // Applying the extracted styles on the selected cell
     applyStylesToElement(currentCell, currentStyles);
     state[selectedCell] = currentStyles;
+    localStorage.setItem(selectedSheet, JSON.stringify(state)); // Saving the current sheet data in the local storage.
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 1000);
   }
 });
 
@@ -69,7 +76,7 @@ function onCellFocus(e) {
   e.target.classList.add("active-cell"); //Adding the active-cell class to the currently selectedCell
 
   if (!state[selectedCell]) {
-    state[selectedCell] = {...defaultStyles};
+    state[selectedCell] = { ...defaultStyles };
   }
 
   applyCurrentStylesToForm();
@@ -96,8 +103,14 @@ fx.addEventListener("keyup", (e) => {
 
 // Function to set innerText
 function setInnerText() {
+  loader.style.display = "flex";
   const currentCell = document.getElementById(selectedCell);
   state[selectedCell].innerText = currentCell.innerText;
+  localStorage.setItem(selectedSheet, JSON.stringify(state)); // Saving the current sheet data in the local storage.
+
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 1500);
 }
 
 const footForm = document.querySelector(".foot-form");

@@ -28,7 +28,8 @@
     color: white;
     cursor: pointer;
 }
-#navbar li:hover{
+
+#navbar li:hover {
     color: lightgray;
 }
 
@@ -82,6 +83,28 @@ input:checked+label {
 
 input+label:hover {
     background-color: #D3E2FD;
+}
+
+#saving_div {
+    display: none;
+    gap: 5px;
+    color: rgba(99, 74, 74, 0.623);
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 5px lightgray;
+    border-top: 5px gray;
+    border-radius: 50%;
+    border-style: dotted;
+    animation: loader 2s linear 0s infinite;
+}
+
+@keyframes loader {
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .row2 {
