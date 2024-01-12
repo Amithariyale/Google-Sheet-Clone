@@ -17,7 +17,7 @@ const defaultStyles = {
   italic: false,
   underline: false,
   align: "left",
-  bgColor: "#faf0ff",
+  bgColor: "#ffffff",
   textColor: "#000000",
 };
 
@@ -39,7 +39,6 @@ form.addEventListener("input", (e) => {
     loader.style.display = "flex";
     // Checking that any cell is selected or not to apply style
     const currentCell = document.getElementById(selectedCell);
-
     // Extracting styles from the form
     const currentStyles = {
       innerText: currentCell.innerText,
