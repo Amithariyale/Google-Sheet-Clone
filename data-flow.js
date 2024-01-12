@@ -9,7 +9,7 @@ let sheetCnt = 1,
 // Default styles for cells
 const defaultStyles = {
   innerText: "",
-  fontFamily: "monospace",
+  fontFamily: "",
   fontSize: 14,
   bold: false,
   italic: false,
@@ -69,8 +69,9 @@ function onCellFocus(e) {
   e.target.classList.add("active-cell"); //Adding the active-cell class to the currently selectedCell
 
   if (!state[selectedCell]) {
-    state[selectedCell] = defaultStyles;
+    state[selectedCell] = {...defaultStyles};
   }
+
   applyCurrentStylesToForm();
 }
 
